@@ -6,13 +6,15 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class tc1_steps {
-	private static final String Base_url="https://api.restful-api.dev/";
+	private static final String Base_url="https://jsonplaceholder.typicode.com/posts/1";
 	Response response;
 	RequestSpecification request;
 	String output;
 	
-	@Given("the user in URL https:\\/\\/api.restful-api.dev\\/objects")
-	public void the_user_in_URL_https_api_restful_api_dev_objects() {
+
+	@Given("the user in URL https:\\/\\/jsonplaceholder.typicode.com\\/posts")
+	public void the_user_in_URL_https_jsonplaceholder_typicode_com_posts() {
+		System.out.println("GET request");
 	    System.out.println("user is in url page");
 	    RestAssured.baseURI=Base_url;
 	}
@@ -27,7 +29,6 @@ public class tc1_steps {
 
 	@Then("he gets the response of {int}")
 	public void he_gets_the_response_of(Integer int1) {
-	   System.out.println("nooo");
 	   output= response.asString();
 	   System.out.println(output);
 	   int statuscode= response.getStatusCode();
